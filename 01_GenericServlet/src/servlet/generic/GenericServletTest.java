@@ -26,7 +26,7 @@ public class GenericServletTest extends GenericServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.print("<html><body>");
-		out.print("<h2>Hello~ 딥노이드 상치기가즈아!</h2>");
+		out.print("<h2>Hello~</h2>");
 		out.print("</body></html>");
 		
 		out.close();
