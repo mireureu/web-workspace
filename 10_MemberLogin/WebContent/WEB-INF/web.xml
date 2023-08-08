@@ -49,4 +49,14 @@
     <servlet-name>EncodingFilter</servlet-name>
     <url-pattern>/EncodingFilter</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllMemberServlet</display-name>
+    <servlet-name>AllMemberServlet</servlet-name>
+    <servlet-class>servlet.controller.AllMemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllMemberServlet</servlet-name>
+    <url-pattern>/AllMemberServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

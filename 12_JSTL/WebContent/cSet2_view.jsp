@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>없음</h2>
+	
+	<h2>cSet2.jsp에서 바인딩된 값을 찾아옴</h2>
+	상품코드 : ${CODE}<br>
+	상품명 : ${NAME}<br>
+	상품가격 : ${PRICE}<br>
+
 </body>
 </html>

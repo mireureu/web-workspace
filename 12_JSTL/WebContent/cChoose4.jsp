@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>없음</h2>
+	<form action="cChoose4_view.jsp">
+		NUM : <input type="text" name="num"><br>
+		<input type="submit" value="send">
+	
+	</form>
 </body>
 </html>
