@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>===== Fruits All item =====</h2>
-	<a href="itemList.do">Show All Fruit Item Using Factory Pattern</a>
+	<a href="AllItem.do">Show All Fruit Item Using Factory Pattern</a>
 	
 </body>
 </html>

@@ -53,6 +53,9 @@ public class ItemDAO implements ItemDAOTemplate{
 			vo.setItemId(rs.getInt("ITEM_ID"));
 			vo.setItemName(rs.getString("ITEM_NAME"));
 			vo.setPrice(rs.getInt("price"));
+			vo.setPictureUrl(rs.getString("PICTURE_URL"));
+			vo.setDescription(rs.getString("DESCRIPTION"));
+			vo.setCount(rs.getInt("COUNT"));
 			list.add(vo);
 		}
 		return list;
@@ -60,12 +63,46 @@ public class ItemDAO implements ItemDAOTemplate{
 
 	@Override
 	public Item getItem(int itemId) throws SQLException {
-		return null;
+		Connection conn = getConnection();
+		
+		String query = "SELECT * FROM ITEM WHERE item_id=?";
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setInt(1, itemId);
+		
+		ResultSet rs = ps.executeQuery();
+		Item item = null;
+		if(rs.next()) {
+			item = new Item();
+			item.setItemId(rs.getInt("ITEM_ID"));
+			item.setItemName(rs.getString("ITEM_NAME"));
+			item.setPrice(rs.getInt("price"));
+			item.setPictureUrl(rs.getString("PICTURE_URL"));
+			item.setDescription(rs.getString("DESCRIPTION"));
+			item.setCount(rs.getInt("COUNT"));
+
+			System.out.println(item);
+		}
+		closeALl(rs, ps, conn);
+		return item;
 	}
 
 	@Override
 	public boolean updateRecordCount(int itemId) throws SQLException {
-		return false;
+		Connection conn = getConnection();
+		
+		String query = "UPDATE item SET count=count+1 WHERE item_id=?";
+		
+		PreparedStatement ps = conn.prepareStatement(query);
+		ps.setInt(1, itemId);
+		
+		int row = ps.executeUpdate();
+		
+		boolean result = false;
+		if(row > 0) result = true;
+		
+		closeAll(ps, conn);
+		
+		return result;
 	}
 
 	public static void main(String[] args) {
@@ -76,6 +113,10 @@ public class ItemDAO implements ItemDAOTemplate{
 		} catch (SQLException e) {
 			System.out.println("실패~");
 		}
+	}
+	public static ItemDAO getInstance() {
+		
+		return dao;
 	}
 
 }

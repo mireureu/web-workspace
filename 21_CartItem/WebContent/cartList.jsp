@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>장바구니</h1>
-	<a href="itemList.do">쇼핑 계속하기</a>
+	<a href="AllItem.do">쇼핑 계속하기</a>
 </body>
 </html>

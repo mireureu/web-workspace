@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,63 +10,62 @@
 </head>
 <style>
 	h1{
-		margin-left: 300px;
+		text-align: center;
 	}
-	img{
-		width: 300px;
-		height: 250px;
+	table {
+		margin: 0 auto;
 	}
-	/* table{
-		border: solid 1px rgb(161, 161, 161);
-		border-top: none;
-		border-left: none;
-		border-right: none;
-	} */
+	table img {
+		width: 100px;
+		height: 100px;
+		object-fit: cover;
+		}
+	h2 {
+		text-align: center;
+	}
 </style>
 <body>
 	<h1>Fruit Total List</h1>
 	<table>
 	<thead>
 		<tr>
-			<td>
-				<a href="itemView.jsp?id=딸기">
-				<img src="img/berry.jpg" >
-				</a>
-				<p>상품명 : 딸 기</p>
-				<p>가 격 : 4500원</p>
-			</td>
-			<td>
-				<a href="itemView.jsp?id=포도">
-				<img src="img/grape.jpg">
-				</a>
-				<p>상품명 : 포 도</p>
-				<p>가 격 : 5000원</p>
-			</td>
-			<td>
-				<a href="itemView.jsp?id=규울">
-				<img src="img/gual.jpg">
-				</a>
-				<p>상품명 : 규 울</p>
-				<p>가 격 : 4000원</p>
-			</td>
-			<td>
-				<a href="">
-				<img src="img/kiwi.jpg">
-				</a>
-				<p>상품명 : 키 위</p>
-				<p>가 격 : 8000원</p>
-			</td>
-			<td>
-				<a href="">
-				<img src="img/lemon.jpg">
-				</a>
-				<p>상품명 : 레 몬</p>
-				<p>가 격 : 3000원</p>
-			</td>
+			<c:forEach items="${list}" var="item">
+                    <td>
+                    	<a href="itemView.do?id=${item.itemId}">
+                        <p><img src="${item.pictureUrl}"></p>
+						</a>
+                        <p>상품명 : ${item.itemName}</p>
+                        <p>가 격 : ${item.price}원 </p>
+
+                    </td>
+            </c:forEach>
 		</tr>
-		
 	</thead>
 	</table>
+		
+	
+	
+		<tbody>
+			<c:if test="${not empty fruits}">
+	
+			<hr></hr>
+			<h2>오늘 본 상품</h2>
+			
+			<table>
+				<c:forEach items="${fruits}" var="fruit">
+					<td>
+						<img src="${fruit}">
+					</td>
+				</c:forEach>
+			</table>
+			
+			</c:if>
+		</tbody>
+	
+
+
+
+	
 	<table>
 		<hr></hr>
 	</table>
