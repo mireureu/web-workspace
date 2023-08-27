@@ -20,17 +20,18 @@
 	 	VALUES(#{id}, #{password}, #{name}, #{address})
 	 </insert>
 	 
-	 <select id="showAllMember" parameterType="Member" resultType="ArrayList">
-	 	SELECT * FROM MEMBER
+	 <select id="showAllMember" resultType="Member">
+	 	SELECT id, password, name, address FROM MEMBER
 	 </select>
-	 <select id="findByIdMember" parameterType="Member" resultType="String">
+	 <select id="findByIdMember" parameterType="String" resultType="Member">
 	 	SELECT * FROM MEMBER WHERE id=#{id}
 	 </select>
-	 <select id="login" parameterType="Member" resultType="Boolean">
-	 	SELECT * FROM MEMBER WHERE id='#{id}, password='#{password}
+	 <select id="login" parameterType="Member" resultType="Member">
+	 	SELECT * FROM MEMBER WHERE id=#{id} AND password=#{password}
 	 </select>
+	 
 	 <update id="updateMember" parameterType="Member">
-	 	UPDATE member SET password=#{password}, name=#{name}, address=#{address} WHERE id=#{id}
+	 	UPDATE member SET password=#{password}, name=#{name}, address=#{address} WHERE id=#{id}  
 	 </update>
 	 <!--  showAllMember, findByIdMember, login, updateMember --> 
 </mapper>
